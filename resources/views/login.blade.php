@@ -1,6 +1,6 @@
 <x-layouts.main>
     <x-UI.card>
-        <form action="#">
+        <form action="{{ route('login.store') }}" method="POST">
             @csrf
             <h1 class="mb-4 text-2xl text-center underline text-cyan-900">Login</h1>
             <div class="flex flex-col justify-center">

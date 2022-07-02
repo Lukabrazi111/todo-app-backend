@@ -24,14 +24,22 @@
                     </svg>
                 </a>
             </div>
-            <ul class="flex items-center space-x-10">
-                <li>
-                    <a href="{{ route('login') }}" class="px-5 py-4 hover:underline text-lg">Login</a>
-                </li>
-                <li>
-                    <a href="{{ route('register') }}" class="px-5 py-4 hover:underline text-lg">Register</a>
-                </li>
-            </ul>
+            @if(auth()->check())
+                <ul class="flex items-center space-x-10">
+                    <li>
+                        <a href="{{ route('login') }}" class="px-5 py-4 hover:underline text-lg">Logout</a>
+                    </li>
+                </ul>
+            @else
+                <ul class="flex items-center space-x-10">
+                    <li>
+                        <a href="{{ route('login') }}" class="px-5 py-4 hover:underline text-lg">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('register') }}" class="px-5 py-4 hover:underline text-lg">Register</a>
+                    </li>
+                </ul>
+            @endif
         </nav>
     </x-UI.container>
 </header>
