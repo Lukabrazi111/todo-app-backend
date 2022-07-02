@@ -11,10 +11,9 @@
                            class="border border-gray-400 border-opacity-50 py-2 px-2 focus:shadow focus:outline-none rounded w-full mt-1">
                 </div>
                 <div class="w-full">
-                    <button
-                        class="text-center bg-blue-300 w-full mt-4 rounded py-2 hover:bg-blue-400 transition-colors hover:text-white">
+                    <x-UI.button>
                         Login
-                    </button>
+                    </x-UI.button>
                 </div>
             </div>
         </form>
