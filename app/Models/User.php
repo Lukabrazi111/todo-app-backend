@@ -42,4 +42,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    private $storagePath = '/storage/images/';
+
+    /*
+     * Check if image is exist in database
+     */
+    public function isImageExists()
+    {
+        if (is_null($this->image)) {
+            return asset('avatars/default-avatar.png');
+        }
+
+        return config('app.url') . $this->storagePath . $this->image;
+    }
 }

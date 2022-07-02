@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }}</title>
+    {{--    <title>{{ config('app.name') }}</title>--}}
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Alpine js -->
@@ -32,13 +32,8 @@
                         class="flex items-center space-x-4 relative">
                         <span class="text-lg mr-2">{{ auth()->user()->username }}</span>
                         <div>
-                            @if(!auth()->user()->image)
-                                <img src="{{ asset('avatars/default-avatar.png') }}" alt="default-avatar"
-                                     class="w-12 h-12 rounded-full object-cover">
-                            @else
-                                <img src="{{ url('storage/images/' . auth()->user()->image) }}" alt="user-image"
-                                     class="w-12 h-12 rounded-full object-cover">
-                            @endif
+                            <img src="{{ auth()->user()->isImageExists() }}" alt="user-avatar"
+                                 class="w-12 h-12 rounded-full object-cover">
                         </div>
                         <button
                             x-on:click.outside="open = false"
