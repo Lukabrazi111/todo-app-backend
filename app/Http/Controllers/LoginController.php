@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -23,5 +21,11 @@ class LoginController extends Controller
         }
 
         return redirect()->route('login')->with('error', 'Incorrect credentials!');
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('login')->with('success', 'User logged out successfully!');
     }
 }

@@ -27,7 +27,7 @@
             @if(auth()->check())
                 <ul class="flex items-center space-x-10">
                     <li>
-                        <a href="{{ route('login') }}" class="px-5 py-4 hover:underline text-lg">Logout</a>
+                        <a href="{{ route('user.logout') }}" class="px-5 py-4 hover:underline text-lg">Logout</a>
                     </li>
                 </ul>
             @else
@@ -47,9 +47,11 @@
 {{ $slot }}
 
 @if(session()->has('success'))
-    <div class="absolute bottom-20 left-20 bg-green-400 px-10 py-2 rounded animate-bounce text-white font-bold text-lg">
+    <div
+        class="absolute bottom-20 left-20 bg-green-400 px-10 py-2 rounded animate-bounce text-white font-bold text-lg">
         <span>{{ session('success') }}</span>
     </div>
 @endif
+
 </body>
 </html>
