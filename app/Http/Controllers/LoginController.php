@@ -16,7 +16,9 @@ class LoginController extends Controller
     {
         $request->validated();
 
-        if (Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
+        $fieldType = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if (Auth::attempt([$fieldType => $request->input('username'), 'password' => $request->input('password')])) {
             return redirect()->route('index');
         }
 
