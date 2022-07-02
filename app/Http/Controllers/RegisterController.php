@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -23,10 +25,14 @@ class RegisterController extends Controller
     {
         $request->validated();
 
+        // Store image in storage folder
+        $newImageName = time() . '-' . $request->file('image')->getClientOriginalName(); // get original file name
+        $request->file('image')->storeAs('public/images', $newImageName);
+
         User::create([
             'username' => $request->input('username'),
             'email' => $request->input('email'),
-            'image' => $request->file('image')->getClientOriginalName(),
+            'image' => $newImageName,
             'password' => Hash::make($request->input('password')),
         ]);
 

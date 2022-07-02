@@ -21,12 +21,7 @@
         <nav class="flex items-center justify-between">
             <div>
                 <a href="{{ route('index') }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-300" fill="none"
-                         viewBox="0 0 24 24"
-                         stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                    </svg>
+                    <x-UI.main-logo/>
                 </a>
             </div>
             @if(auth()->check())
@@ -35,12 +30,18 @@
                         x-cloak
                         x-data="{ open: false }"
                         class="flex items-center space-x-4 relative">
-                        <span>{{ auth()->user()->username }}</span>
+                        <span class="text-lg mr-2">{{ auth()->user()->username }}</span>
                         <div>
-                            <img src="{{ asset('avatars/default-avatar.png') }}" alt="default-avatar"
-                                 class="w-10 h-10 rounded-full">
+                            @if(!auth()->user()->image)
+                                <img src="{{ asset('avatars/default-avatar.png') }}" alt="default-avatar"
+                                     class="w-12 h-12 rounded-full object-cover">
+                            @else
+                                <img src="{{ url('storage/images/' . auth()->user()->image) }}" alt="user-image"
+                                     class="w-12 h-12 rounded-full object-cover">
+                            @endif
                         </div>
                         <button
+                            x-on:click.outside="open = false"
                             @click="open = !open"
                             class="py-3 px-2">
                             <span>
