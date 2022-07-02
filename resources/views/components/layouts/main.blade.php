@@ -37,5 +37,11 @@
 </header>
 
 {{ $slot }}
+
+@if(session()->has('success'))
+    <div class="absolute bottom-20 left-20 bg-green-400 px-10 py-2 rounded animate-bounce text-white font-bold text-lg">
+        <span>{{ session('success') }}</span>
+    </div>
+@endif
 </body>
 </html>
