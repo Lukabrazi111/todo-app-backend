@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name') }}</title>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200&family=Iceland&family=Montserrat:wght@200;400&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
     <!-- Alpine js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>[x-cloak] {
+    <style>
+        [x-cloak] {
             display: none !important
-        }</style>
+        }
+    </style>
 
 </head>
-<body class="antialiased bg-orange-100">
+<body class="antialiased bg-orange-100 font-firaSans">
 <header class="px-5 bg-blue-600 text-white py-4">
     <x-UI.container>
         <nav class="flex items-center justify-between">
@@ -52,9 +58,7 @@
                             x-show="open"
                             x-transition.origin.top.duration.200ms
                             class="bg-white text-black w-40 absolute top-16 z-20 border border-gray-400 flex flex-col rounded">
-                            <a href="#"
-                               class="px-2 py-2 bg-gray-100 text-gray-900 border-b border-gray-400 hover:bg-gray-300">Account</a>
-                            <a href="#"
+                            <a href="{{ route('profile.index') }}"
                                class="px-2 py-2 bg-gray-100 text-gray-900 border-b border-gray-400 hover:bg-gray-300">Profile</a>
                             <a href="{{ route('user.logout') }}"
                                class="px-2 py-2 bg-gray-100 text-gray-900 border-b hover:bg-gray-300">Logout</a>

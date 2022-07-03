@@ -1,4 +1,4 @@
-<x-layouts.main>
+<x-layout.main>
     <x-UI.card>
         <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -54,5 +54,5 @@
             </div>
         </form>
     </x-UI.card>
-</x-layouts.main>
+</x-layout.main>
 

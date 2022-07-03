@@ -6,7 +6,11 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                firaSans: ['Fira Sans', 'sans-serif'],
+            }
+        },
     },
     plugins: [],
 }
