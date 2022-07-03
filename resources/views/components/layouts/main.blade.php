@@ -79,6 +79,9 @@
 
 @if(session()->has('success'))
     <div
+        x-data="{ show : true }"
+        x-show="show"
+        x-init="setTimeout(() => {show = false}, 3000)"
         class="absolute bottom-20 left-20 bg-green-400 px-10 py-2 rounded animate-bounce text-white font-bold text-lg">
         <span>{{ session('success') }}</span>
     </div>
