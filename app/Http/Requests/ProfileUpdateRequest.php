@@ -27,6 +27,8 @@ class ProfileUpdateRequest extends FormRequest
             'username' => 'required|min:3|max:120',
             'email' => 'required|email|exists:users',
             'image' => 'image|mimes:png,jpeg,jpg,svg',
+            'city' => 'string|max:45|min:3|nullable',
+            'phone' => 'string|max:14|min:9|nullable',
             'password' => 'required|min:6|max:125',
             'confirm_password' => 'required|same:password',
         ];

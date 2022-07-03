@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,6 +19,13 @@ class ProfileController extends Controller
         $request->validated();
 
         $user = User::find($id);
+        $profile = Profile::find($id);
+
+        $profile->update([
+            'user_id' => $user->id,
+            'city' => $request->input('city'),
+            'phone' => $request->input('phone'),
+        ]);
 
         if ($request->file('image')) {
             $newImage = time() . '-' . $request->file('image')->getClientOriginalName();

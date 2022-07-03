@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id');
             $table->string('city')->nullable();
-            $table->tinyInteger('phone')->unique()->nullable();
+            $table->tinyInteger('phone')->nullable();
             $table->enum('gender', ['Male', 'Female'])->default('Male');
             $table->timestamps();
         });
