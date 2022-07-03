@@ -42,12 +42,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     private $storagePath = '/storage/images/';
+
+    /*
+     * Relationship for profile
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id');
+    }
 
     /*
      * Check if image is exist in database
      */
+
     public function isImageExists()
     {
         if (is_null($this->image)) {
