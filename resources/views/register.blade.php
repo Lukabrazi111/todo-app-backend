@@ -33,6 +33,15 @@
                     @error('image')
                     <small class="text-red-500">{{ $message }}</small>
                     @enderror
+                    <label for="gender" class="text-gray-900">Gender</label>
+                    <select name="gender" id="gender" class="py-2 px-1 focus:outline-none mb-5">
+                        <option value="Male">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    @error('gender')
+                    <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                     <label for="password" class="text-gray-900">Password</label>
                     <input type="password" name="password" id="password"
                            class="border border-gray-400 border-opacity-50 py-2 px-2 focus:shadow focus:outline-none rounded w-full mb-5 mt-1">

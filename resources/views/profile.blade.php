@@ -11,7 +11,7 @@
                 </div>
             </x-UI.card>
             <x-UI.card class="max-w-sm w-full px-0 py-0">
-                <div class="pb-12">
+                <div class="pb-10">
                     <div class="relative mb-10">
                         <img src="{{ asset('avatars/background-image.jpg') }}" alt="default-avatar"
                              class="object-cover w-full rounded-t-lg">
@@ -23,8 +23,14 @@
                     <div class="text-center text-gray-800">
                         <div class="flex flex-col items-center space-y-2">
                             <span class="text-2xl">{{ auth()->user()->username }}</span>
+                            <span>Gender: {{ auth()->user()->profile->gender }}</span>
                             <span>{{ auth()->user()->email }}</span>
-                            <span class="text-sm">New York, USA</span>
+                            @if(!is_null(auth()->user()->profile->city))
+                                <span>{{ auth()->user()->profile->city }}</span>
+                            @endif
+                            @if(!is_null(auth()->user()->profile->phone))
+                                <span>Phone number: {{ auth()->user()->profile->phone }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>
