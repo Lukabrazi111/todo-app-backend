@@ -13,7 +13,7 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +24,18 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|unique:users,username',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:3|max:120|same:confirm_password',
-            'confirm_password' => 'required',
+            'username' => 'required|min:3|max:120',
+            'email' => 'required|email|exists:users',
+            'image' => 'image|mimes:png,jpeg,jpg,svg',
+            'password' => 'required|min:6|max:125',
+            'confirm_password' => 'required|same:password',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.exists' => 'You can\'t update your email!',
         ];
     }
 }
